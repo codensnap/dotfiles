@@ -1,0 +1,25 @@
+call plug#begin()
+Plug 'tpope/vim-sensible'
+Plug 'preservim/nerdtree'
+Plug 'tomasiser/vim-code-dark'
+Plug 'mg979/vim-xtabline'
+Plug 'tomasiser/vim-code-dark'
+Plug 'prettier/vim-prettier', { 'do': 'yarn install' }
+Plug 'chiel92/vim-autoformat'
+Plug 'neoclide/coc.nvim', {'branch': 'release'}
+Plug 'christoomey/vim-tmux-navigator'
+call plug#end()
+
+set autochdir
+" TAB in general mode will move to text buffer
+nnoremap <TAB> :bnext<CR>
+" SHIFT-TAB will go back
+nnoremap <S-TAB> :bprevious<CR>
+set showtabline=2
+
+"Config Section
+if (has("termguicolors"))
+ set termguicolors
+endif
+syntax enable
+colorscheme codedark

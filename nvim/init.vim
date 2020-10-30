@@ -1,5 +1,3 @@
-"source $HOME/.config/nvim/vim-plug/plugins.vim
-
 " set leader key
 " auto-install vim-plug
 call plug#begin('~/.vim/plugged')
@@ -19,12 +17,11 @@ Plug 'liuchengxu/vista.vim'
 Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
 Plug 'junegunn/fzf'
 Plug 'christoomey/vim-tmux-navigator'
-" Plug 'mg979/vim-xtabline'
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
 Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
 Plug 'junegunn/fzf.vim'
-Plug 'airblade/vim-rooter'
+Plug 'fatih/vim-go'
 call plug#end()
 
 "Config Section
@@ -61,6 +58,9 @@ set showtabline=2
 
 " Always show line numbers
 set number
+
+" Always maintain current directory
+set autochdir
 
 " Use tab for trigger completion with characters ahead and navigate.
 " Use command ':verbose imap <tab>' to make sure tab is not mapped by other plugin.
@@ -181,4 +181,23 @@ command! -bang -nargs=* GGrep
   \ call fzf#vim#grep(
   \   'git grep --line-number '.shellescape(<q-args>), 0,
   \   fzf#vim#with_preview({'dir': systemlist('git rev-parse --show-toplevel')[0]}), <bang>0)
+
+let NERDTreeIgnore = ['\.md$', '\.pub$']
+
+" Better window navigation
+nnoremap <C-h> <C-w>h
+nnoremap <C-j> <C-w>j
+nnoremap <C-k> <C-w>k
+nnoremap <C-l> <C-w>l
+
+"BACKUP
+"let NERDTreeMapCWD = "CD"
+"Keep the current directory updated as per the current file 
+"autocmd BufEnter * lcd%:p:h
+"let NERDTreeMapChdir = "cd"
+"set autochdir
+"autocmd BufEnter * silent! lcd %:p:h
+"let g:NERDTreeChDirMode=0
+"let NERDTreeMapCWD = "CD"
+
 
